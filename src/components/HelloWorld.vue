@@ -1,85 +1,24 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div>
+      <input type="text" v-model="input_val">
+    </div>
+    <div v-if="input_val">
+      Once upon a time there was a  <span v-text="input_val"></span>
+    </div>
+    
+    <div>
+      <button class="btn btn-primary" v-on:click="plus()">I can eat {{counter}} apple!</button>
+      <button class="btn btn-primary" v-on:click="addUser()">add User</button>
+    </div>
+    <div>
+      <ul>
+        <li v-for="user in users">
+          {{user.firstname}} {{user.lastname}}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -88,7 +27,28 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to My 1st Vue.js App',
+      input_val: '',
+      counter: 0,
+      userCount: 0,
+      users: [
+        {firstname: 'jim', lastname: 'smith'},
+        {firstname: 'jack', lastname: 'jill'},
+        {firstname: 'john', lastname: 'pinto'}
+      ]
+    }
+  },
+  methods: {
+    plus: function () {
+      this.counter++;
+    },
+    randomNameGenerator: function () {
+      return _.range(5).map(i => _.sample("abcdefghijklmnopqrstuvwxyz")).join('');
+    }
+    ,
+    addUser: function () {
+      this.userCount++; 
+      this.users = [...this.users, {firstname: `${this.randomNameGenerator()}`, lastname: `${this.randomNameGenerator()}`}];
     }
   }
 }
@@ -98,6 +58,9 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+div {
+  padding: 10px;
 }
 ul {
   list-style-type: none;
