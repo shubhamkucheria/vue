@@ -1,27 +1,7 @@
 <template>
   <div class="hello">
   <h1>HelloCountry</h1>
-        <div id="main-container">
-    <div id="flag-container">
-      <img src="" alt="">
-    </div>
-    <div id="info-container">
-      <select id="countries"></select>
-      <p>Capital: <span id="capital"></span></p>
-      <p>Dialing Code: <span id="dialing-code"></span></p>
-      <p>Population: <span id="population"></span></p>
-      <p>Currencies: <span id="currencies"></span></p>
-      <p>Region: <span id="region"></span></p>
-      <p>Subregion: <span id="subregion"></span></p>
-    </div>
-    </div>
-    <div>
-      <ul>
-        <li v-for="user in users">
-          {{user.firstname}} {{user.lastname}}
-        </li>
-      </ul>
-    </div>
+       
   </div>
 </template>
 
