@@ -1,37 +1,32 @@
 <template>
   <div class="hello">
   <h1>HelloCountry</h1>
-       
+  <button class="btn btn-primary" v-on:click="getCountryList();">Show Countries</button>
+
+  <div v-if="countryData.length">
+      <ul>
+        <li v-for="country in countryData">
+          {{country.name}}
+        </li>
+      </ul>
+    </div>
+        
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to My 1st Vue.js App',
-      input_val: '',
-      counter: 0,
-      userCount: 0,
-      users: [
-        {firstname: 'jim', lastname: 'smith'},
-        {firstname: 'jack', lastname: 'jill'},
-        {firstname: 'john', lastname: 'pinto'}
-      ]
+    countryData: []
     }
   },
   methods: {
-    plus: function () {
-      this.counter++;
-    },
-    randomNameGenerator: function () {
-      return _.range(5).map(i => _.sample("abcdefghijklmnopqrstuvwxyz")).join('');
-    }
-    ,
-    addUser: function () {
-      this.userCount++; 
-      this.users = [...this.users, {firstname: `${this.randomNameGenerator()}`, lastname: `${this.randomNameGenerator()}`}];
+    getCountryList: function () {
+      axios.get('https://restcountries.eu/rest/v2/all')
+      .then(res => this.countryData = res.data)
+      .catch(err => console.log(err));    
     }
   }
 }

@@ -4,7 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import _ from 'lodash'
+import axios from "axios";
 Vue.prototype._ = _
+
+
 
 Vue.config.productionTip = false
 
