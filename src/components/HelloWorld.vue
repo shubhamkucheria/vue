@@ -1,6 +1,21 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msgs }}</h1>
+    
+      <div class="childParentDiv">
+        <div class="column" style="background-color:#34495E;">
+          <h2>Child Component</h2>
+          <ChildOne @inputData="updateMessage" />
+        </div>
+        <div class="column" style="background-color:#41B883;">
+          <h2>Parent Component</h2>
+          <ParentOne :msg="childData" />
+        </div>
+      </div>
+
+
+     
+
   <div>
       <input type="text" v-model="input_val">
     </div>
@@ -23,14 +38,22 @@
 </template>
 
 <script>
+import ParentOne from "./ParentOne";
+import ChildOne from "./ChildOne";
+
 export default {
   name: 'HelloWorld',
+  components: {
+    ParentOne,
+    ChildOne
+  },
   data () {
     return {
-      msg: 'Welcome to My 1st Vue.js App',
+      msgs: 'Welcome to My 1st Vue.js App',
       input_val: '',
       counter: 0,
       userCount: 0,
+      childData: "",
       users: [
         {firstname: 'jim', lastname: 'smith'},
         {firstname: 'jack', lastname: 'jill'},
@@ -39,6 +62,9 @@ export default {
     }
   },
   methods: {
+    updateMessage(variable) {
+      this.childData = variable;
+    },
     plus: function () {
       this.counter++;
     },
@@ -72,5 +98,24 @@ li {
 }
 a {
   color: #42b983;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  color: white;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.childParentDiv:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 </style>
