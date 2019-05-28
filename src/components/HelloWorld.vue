@@ -55,9 +55,9 @@ export default {
       userCount: 0,
       childData: "",
       users: [
-        {firstname: 'jim', lastname: 'smith'},
+        {firstname: 'mike', lastname: 'smith'},
         {firstname: 'jack', lastname: 'jill'},
-        {firstname: 'john', lastname: 'pinto'}
+        {firstname: 'tom', lastname: 'pinto'}
       ]
     }
   },
