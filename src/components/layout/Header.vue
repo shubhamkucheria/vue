@@ -3,7 +3,8 @@
     <h4>My First App </h4>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/HelloCountry">HelloCountry</router-link>
+      <router-link to="/HelloCountry">HelloCountry</router-link>|
+      <router-link to="/HelloTemp">HelloTemp</router-link>
     </div>
   </header>
 </template>
