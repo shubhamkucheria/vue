@@ -1,4 +1,4 @@
-# vue
+# vue - check it out here https://jsvue.netlify.com
 
 > my first vue app
 
